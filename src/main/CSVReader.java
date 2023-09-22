@@ -1,3 +1,5 @@
+package main;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,8 +8,7 @@ import java.util.Scanner;
 
 public class CSVReader {
     
-    public double[][] readDoubleCSV(String path) throws IOException{
-        double[][] res = new double[0][0];
+    public static double[][] readDoubleCSV(String path) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(path));
 
         ArrayList<ArrayList<Double>> data = new ArrayList<>();
@@ -24,9 +25,11 @@ public class CSVReader {
 
         }
 
-        for(int i=0;i<data.size()){
-            for(int j=0;j<data.get(i).size()){
-                
+        double[][] res = new double[data.size()][data.get(0).size()];
+
+        for(int i=0;i<data.size();i++){
+            for(int j=0;j<data.get(i).size();j++){
+                res[i][j] = data.get(i).get(j);
             }
         }
 
